@@ -12,7 +12,7 @@ import requests
 
 st.set_page_config(
     page_title='''WHO'S THAT POKEMON''',
-    page_icon='https://github.com/iushdoescode/WhosThatPokemon-Deployed/edit/master/827ed6bc234ff07054502083a9a2eb7c.jpg'
+    page_icon='827ed6bc234ff07054502083a9a2eb7c.jpg'
 )
 
 class_names = ['Abra',
@@ -200,7 +200,7 @@ def path_to_image_html(path):
 
 def predict(image):
     IMAGE_SHAPE = (128, 128, 3)
-    model = load_model("https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/model_pokemon.h5")
+    model = load_model("model_pokemon.h5")
     test_image = image.convert("RGB").resize((128, 128))
     test_image = np.array(test_image)
     test_image = test_image / 255.0
@@ -222,7 +222,7 @@ def print_data(pokelist):
                       index=np.linspace(1, 5, 5, dtype=int)
                       )
     i = 0
-    sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/tree/master/Sprites'
+    sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/tree/master/Sprites/'
     sprites = []
     for poke in pokelist:
         response = requests.get(url+poke.lower())
