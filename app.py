@@ -168,8 +168,7 @@ class_names = ['Abra',
                'Zapdos',
                'Zubat']
 
-st.title('''Who's That Pokemon!!''')
-st.subheader("Gotta catch 'em all..")
+st.title('''Gotta catch 'em all..!!''')
 
 st.markdown(
     '''- This tool will help you identify :the Pokemon you encounter in your way in the **Kanto Region** *(GEN 1).*
