@@ -222,7 +222,7 @@ def print_data(pokelist):
                       index=np.linspace(1, 5, 5, dtype=int)
                       )
     i = 0
-    sprites_path = 'C:/Users/ayush/PycharmProjects/WHOSthatPokemon/Sprites'
+    sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/tree/master/Sprites'
     sprites = []
     for poke in pokelist:
         response = requests.get(url+poke.lower())
