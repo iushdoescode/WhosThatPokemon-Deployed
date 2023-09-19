@@ -14,6 +14,8 @@ st.set_page_config(
     page_title='''WHO'S THAT POKEMON''',
     page_icon='827ed6bc234ff07054502083a9a2eb7c.jpg'
 )
+fig = plt.figure()
+st.image('pokedex.png', width=400)
 
 class_names = ['Abra',
                'Aerodactyl',
@@ -170,8 +172,8 @@ st.title('''Who's That Pokemon!!''')
 st.subheader("Gotta catch 'em all..")
 
 st.markdown(
-    '''- This tool will help you identify :the Pokemon you encounter in your way in the **Kanto Region** *(Generation 1).* :jp:
-- Just click an image :camera: and upload it to see which Pokemon it is.'''
+    '''- This tool will help you identify :the Pokemon you encounter in your way in the **Kanto Region** *(GEN 1).*
+- Just upload an image of a GEN 1 pokemon to see which Pokemon it is.'''
 )
 
 
