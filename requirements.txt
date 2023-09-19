@@ -1,0 +1,6 @@
+streamlit==0.88.0
+tensorflow-cpu
+numpy
+pandas
+requests
+matplotlib
