@@ -12,7 +12,7 @@ import requests
 
 st.set_page_config(
     page_title='''WHO'S THAT POKEMON''',
-    page_icon='C:/Users/ayush/PycharmProjects/WHOSthatPokemon/827ed6bc234ff07054502083a9a2eb7c.jpg'
+    page_icon='https://github.com/iushdoescode/WhosThatPokemon-Deployed/edit/master/827ed6bc234ff07054502083a9a2eb7c.jpg'
 )
 
 class_names = ['Abra',
