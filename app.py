@@ -15,7 +15,7 @@ st.set_page_config(
     page_icon='827ed6bc234ff07054502083a9a2eb7c.jpg'
 )
 fig = plt.figure()
-st.image('pokedex.png', width=400)
+st.image('Whos-that-Pokemon.png', width=400)
 
 class_names = ['Abra',
                'Aerodactyl',
