@@ -200,7 +200,7 @@ def path_to_image_html(path):
 
 def predict(image):
     IMAGE_SHAPE = (128, 128, 3)
-    model = load_model("C:/Users/ayush/PycharmProjects/WHOSthatPokemon/model_pokemon.h5")
+    model = load_model("https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/model_pokemon.h5")
     test_image = image.convert("RGB").resize((128, 128))
     test_image = np.array(test_image)
     test_image = test_image / 255.0
