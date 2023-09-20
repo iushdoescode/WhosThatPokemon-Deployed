@@ -273,7 +273,7 @@ def print_data(pokelist):
             df.iloc[i, 2] = description
             sprites.append(sprites_path+str(id)+'.png?raw=true')
     st.caption("But Your Pokemon can Also Be....")    
-        i += 1
+    i += 1
     df['Image'] = sprites
     st.title("This is most likely your Pokemon")
     st.write(df.to_html(escape=False, formatters=dict(Image=path_to_image_html)), unsafe_allow_html=True)
