@@ -225,6 +225,8 @@ def print_data(pokelist):
     i = 0
     sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/Sprites/'
     sprites = []
+    for poke in pokelist:
+    response = requests.get(url+poke.lower())
     st.title("This is most likely your Pokemon")
     jresponse = response.json()
     type = jresponse['types'][0]['type']['name']
