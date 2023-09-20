@@ -227,7 +227,6 @@ def print_data(pokelist):
                      index=np.linspace(1, 4, 4, dtype=int)
                       )
     i = 0
-    j=0
     sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/Sprites/'
     sprites = []
     for poke in pokelist:
@@ -263,6 +262,7 @@ def print_data(pokelist):
     st.title("Your Pokemon is Most Likely")   
     st.write(df.to_html(escape=False, formatters=dict(Image=path_to_image_html)), unsafe_allow_html=True)
     df['Image'] = sprites
+    j=0
     for poke in pokelist:
         response = requests.get(url+poke.lower())
         if(response.status_code != 200):
@@ -284,8 +284,8 @@ def print_data(pokelist):
                 if d['language']['name'] == 'en':
                     description = d['flavor_text']
                     break
-            df.iloc[i, 0] = poke.capitalize()
-            df.iloc[i, 1] = type.capitalize()
+            df.iloc[j, 0] = poke.capitalize()
+            df.iloc[j, 1] = type.capitalize()
             description = description.replace('\n', ' ')
             description = description.replace('', ' ')
             df2.iloc[j, 2] = description
