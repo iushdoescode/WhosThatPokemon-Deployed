@@ -218,35 +218,18 @@ def predict(image):
     return result
 def print_data(pokelist):
     url = 'https://pokeapi.co/api/v2/pokemon/'
-    df = pd.DataFrame(data=np.zeros((5, 4)),
+    df = pd.DataFrame(data=np.zeros((1, 4)),
                       columns=['Name',  'Type', 'Description', 'Image'],
                       index=np.linspace(1, 5, 5, dtype=int)
                       )
+    df2=pd.DataFrame(data=np.zeros((4, 4)),
+                     columns=['Name',  'Type', 'Description', 'Image'],
+                     index=np.linspace(1, 5, 5, dtype=int)
+                      )
     i = 0
+    j=0
     sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/Sprites/'
     sprites = []
-    for poke in pokelist:
-        response = requests.get(url+poke.lower())
-    st.title("This is most likely your Pokemon")
-    jresponse = response.json()
-    type = jresponse['types'][0]['type']['name']
-    id = jresponse['id']
-    species_url = jresponse['species']['url']
-    species_response = requests.get(species_url)
-    species_response = species_response.json()
-    description = ''
-    for d in species_response['flavor_text_entries']:
-        if d['language']['name'] == 'en':
-            description = d['flavor_text']
-            break
-    df.iloc[i, 0] = poke.capitalize()
-    df.iloc[i, 1] = type.capitalize()
-    description = description.replace('\n', ' ')
-    description = description.replace('', ' ')
-    df.iloc[i, 2] = description
-    sprites.append(sprites_path+str(id)+'.png?raw=true')
-    st.write(df.to_html(escape=False, formatters=dict(Image=path_to_image_html)), unsafe_allow_html=True)
-
     for poke in pokelist:
         response = requests.get(url+poke.lower())
         if(response.status_code != 200):
@@ -274,11 +257,44 @@ def print_data(pokelist):
             description = description.replace('', ' ')
             df.iloc[i, 2] = description
             sprites.append(sprites_path+str(id)+'.png?raw=true')
-    st.caption("But Your Pokemon can Also Be....")    
+    
     i += 1
     df['Image'] = sprites
-    st.title("This is most likely your Pokemon")
+    st.title("Your Pokemon is Most Likely")   
     st.write(df.to_html(escape=False, formatters=dict(Image=path_to_image_html)), unsafe_allow_html=True)
+    df['Image'] = sprites
+    for poke in pokelist:
+        response = requests.get(url+poke.lower())
+        if(response.status_code != 200):
+
+            df2.iloc[j, 0] = poke
+            df2.iloc[j, 1] = 'Error fetching data from API'
+            df2.iloc[j, 2] = 'Error fetching data from API'
+            sprites.append(sprites_path+'0.png?raw=true')
+
+        else:
+            jresponse = response.json()
+            type = jresponse['types'][0]['type']['name']
+            id = jresponse['id']
+            species_url = jresponse['species']['url']
+            species_response = requests.get(species_url)
+            species_response = species_response.json()
+            description = ''
+            for d in species_response['flavor_text_entries']:
+                if d['language']['name'] == 'en':
+                    description = d['flavor_text']
+                    break
+            df.iloc[i, 0] = poke.capitalize()
+            df.iloc[i, 1] = type.capitalize()
+            description = description.replace('\n', ' ')
+            description = description.replace('', ' ')
+            df2.iloc[j, 2] = description
+            sprites.append(sprites_path+str(id)+'.png?raw=true')
+    
+    j += 1
+    df2['Image'] = sprites
+    st.title("But Your Pokemon can Also Be...")   
+    st.write(df2.to_html(escape=False, formatters=dict(Image=path_to_image_html)), unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
