@@ -195,7 +195,8 @@ def main():
                 predictions = predict(image)
                 time.sleep(1)
                 st.success('Gotcha your pokemon was found')
-                print_data(predictions)
+                print_data1(predictions)
+                print_data2(predictions)
 def path_to_image_html(path):
     return '<img src="'+ path + '" width="60" >'
 
@@ -216,17 +217,12 @@ def predict(image):
         result.append(class_names[highest[i]])
         i += 1
     return result
-def print_data(pokelist):
+def print_data1(pokelist):
     url = 'https://pokeapi.co/api/v2/pokemon/'
     df = pd.DataFrame(data=np.zeros((1, 4)),
                       columns=['Name',  'Type', 'Description', 'Image'],
                       index=np.linspace(1, 1, 1, dtype=int)
-                      )
-    df2=pd.DataFrame(data=np.zeros((4, 4)),
-                     columns=['Name',  'Type', 'Description', 'Image'],
-                     index=np.linspace(1, 4, 4, dtype=int)
-                      )
-    i = 0
+                      )    
     sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/Sprites/'
     sprites = []
     for poke in pokelist:
@@ -261,7 +257,16 @@ def print_data(pokelist):
     df['Image'] = sprites
     st.title("Your Pokemon is Most Likely")   
     st.write(df.to_html(escape=False, formatters=dict(Image=path_to_image_html)), unsafe_allow_html=True)
-    df['Image'] = sprites
+def print_data2(pokelist):
+    url = 'https://pokeapi.co/api/v2/pokemon/'
+    df2=pd.DataFrame(data=np.zeros((4, 4)),
+                     columns=['Name',  'Type', 'Description', 'Image'],
+                     index=np.linspace(1, 4, 4, dtype=int)
+                      )
+    i = 0
+    sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/Sprites/'
+    sprites = []
+
     j=0
     for poke in pokelist:
         response = requests.get(url+poke.lower())
