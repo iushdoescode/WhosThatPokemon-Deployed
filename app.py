@@ -225,6 +225,7 @@ def print_data1(pokelist):
                       )    
     sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/Sprites/'
     sprites = []
+    i = 0
     for poke in pokelist:
         response = requests.get(url+poke.lower())
         if(response.status_code != 200):
@@ -263,7 +264,7 @@ def print_data2(pokelist):
                      columns=['Name',  'Type', 'Description', 'Image'],
                      index=np.linspace(1, 4, 4, dtype=int)
                       )
-    i = 0
+    
     sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/Sprites/'
     sprites = []
 
