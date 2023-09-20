@@ -195,8 +195,8 @@ def main():
                 predictions = predict(image)
                 time.sleep(1)
                 st.success('Gotcha your pokemon was found')
-                print_data1(predictions)
-                print_data2(predictions)
+                print_data1(predictions[0])
+                print_data2(predictions[1:5])
 def path_to_image_html(path):
     return '<img src="'+ path + '" width="60" >'
 
