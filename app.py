@@ -195,8 +195,8 @@ def main():
                 predictions = predict(image)
                 time.sleep(1)
                 st.success('Gotcha your pokemon was found')
-                print_data1(predictions[0])
-                print_data2(predictions[1:5])
+                print_data1(predictions)
+                print_data2(predictions)
 def path_to_image_html(path):
     return '<img src="'+ path + '" width="60" >'
 
@@ -226,7 +226,7 @@ def print_data1(pokelist):
     sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/Sprites/'
     sprites = []
     i = 0
-    for poke in pokelist:
+    for poke in pokelist[0]:
         response = requests.get(url+poke.lower())
         if(response.status_code != 200):
 
@@ -269,7 +269,7 @@ def print_data2(pokelist):
     sprites = []
 
     j=0
-    for poke in pokelist:
+    for poke in pokelist[1:5]:
         response = requests.get(url+poke.lower())
         if(response.status_code != 200):
 
