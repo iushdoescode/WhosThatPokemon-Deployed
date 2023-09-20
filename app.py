@@ -225,6 +225,26 @@ def print_data(pokelist):
     i = 0
     sprites_path = 'https://github.com/iushdoescode/WhosThatPokemon-Deployed/blob/master/Sprites/'
     sprites = []
+    st.title("This is most likely your Pokemon")
+    jresponse = response.json()
+    type = jresponse['types'][0]['type']['name']
+    id = jresponse['id']
+    species_url = jresponse['species']['url']
+    species_response = requests.get(species_url)
+    species_response = species_response.json()
+    description = ''
+    for d in species_response['flavor_text_entries']:
+        if d['language']['name'] == 'en':
+            description = d['flavor_text']
+                ` break
+    df.iloc[i, 0] = poke.capitalize()
+    df.iloc[i, 1] = type.capitalize()
+    description = description.replace('\n', ' ')
+    description = description.replace('', ' ')
+    df.iloc[i, 2] = description
+    sprites.append(sprites_path+str(id)+'.png?raw=true')
+    st.write(df.to_html(escape=False, formatters=dict(Image=path_to_image_html)), unsafe_allow_html=True)
+
     for poke in pokelist:
         response = requests.get(url+poke.lower())
         if(response.status_code != 200):
@@ -252,11 +272,10 @@ def print_data(pokelist):
             description = description.replace('', ' ')
             df.iloc[i, 2] = description
             sprites.append(sprites_path+str(id)+'.png?raw=true')
-            
+    st.caption("But Your Pokemon can Also Be....")    
         i += 1
     df['Image'] = sprites
-    st.title("Here are the five most likely Pokemons")
-    st.caption("in decreasing order of confidence..")
+    st.title("This is most likely your Pokemon")
     st.write(df.to_html(escape=False, formatters=dict(Image=path_to_image_html)), unsafe_allow_html=True)
 
 
