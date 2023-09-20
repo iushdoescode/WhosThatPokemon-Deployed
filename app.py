@@ -212,7 +212,7 @@ def predict(image):
     scores = scores.numpy()
     highest = scores.argsort()[-5:][::-1]
     result = []
-    for i in range(1):
+    for i in range(5):
         result.append(class_names[highest[i]])
         i += 1
     return result
