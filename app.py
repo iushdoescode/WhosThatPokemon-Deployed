@@ -236,7 +236,7 @@ def print_data(pokelist):
     for d in species_response['flavor_text_entries']:
         if d['language']['name'] == 'en':
             description = d['flavor_text']
-                ` break
+            break
     df.iloc[i, 0] = poke.capitalize()
     df.iloc[i, 1] = type.capitalize()
     description = description.replace('\n', ' ')
