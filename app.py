@@ -212,7 +212,7 @@ def predict(image):
     scores = scores.numpy()
     highest = scores.argsort()[-5:][::-1]
     result = []
-    for i in range(5):
+    for i in range(1):
         result.append(class_names[highest[i]])
         i += 1
     return result
@@ -220,11 +220,11 @@ def print_data(pokelist):
     url = 'https://pokeapi.co/api/v2/pokemon/'
     df = pd.DataFrame(data=np.zeros((1, 4)),
                       columns=['Name',  'Type', 'Description', 'Image'],
-                      index=np.linspace(1, 5, 5, dtype=int)
+                      index=np.linspace(1, 1, 1, dtype=int)
                       )
     df2=pd.DataFrame(data=np.zeros((4, 4)),
                      columns=['Name',  'Type', 'Description', 'Image'],
-                     index=np.linspace(1, 5, 5, dtype=int)
+                     index=np.linspace(1, 4, 4, dtype=int)
                       )
     i = 0
     j=0
