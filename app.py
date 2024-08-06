@@ -8,8 +8,7 @@ from tensorflow import keras
 from tensorflow.keras.models import load_model
 from tensorflow.keras import preprocessing
 import time
-import requests
-
+import requests #test commit
 st.set_page_config(
     page_title='''WHO'S THAT POKEMON''',
     page_icon='827ed6bc234ff07054502083a9a2eb7c.jpg'
